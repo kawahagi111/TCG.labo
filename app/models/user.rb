@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates_format_of :password, with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
 
   with_options presence: true do
-    validates :nickname
+    validates :nickname, length: {maximum: 25}   
     validates :name
     validates :profile
   end
