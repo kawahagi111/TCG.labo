@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+    <table class="table">
+        <%= "いいねしたデッキ" %> 
+      </table>
+    <div class="user__card">
+    <% @likes.each do |like| %>
+    <% tweet = Tweet.find_by(id: like.tweet_id) %>
+    <% user = User.find_by(id: tweet.user_id) %>
+  <div class="card">
+  <%= link_to image_tag(tweet.image, class: :card__img ), tweet_path(tweet.id) %>
+  <div class="card__body">
+    <%= link_to tweet.title, tweet_path(tweet.id), class: :card__title%>
+    <% if current_user.liked_by?(tweet.id) %>
+  <td><%= link_to 'いいね外す', destroy_like_path(tweet), method: :DELETE %> <%= tweet.likes.count %></td>
+<% else %>
+  <td><%= link_to 'いいねする', create_like_path(tweet), method: :POST %> <%= tweet.likes.count %></td>
+<% end %>
+     <%= link_to "#{tweet.user.nickname}", "/users/#{tweet.user_id}", class: :card__user %>
+  </div>
+</div>
+    <% end %>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>

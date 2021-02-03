@@ -1,0 +1,23 @@
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">プロフィール</th>
+            <td class="table__col2"><%= "#{@user.profile}" %></td>
+            
+             <%= link_to "お気に入り一覧へ" , like_path, class: :comment_user %>
+   
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="page-heading">
+        <%= "#{@user.nickname}のデッキ"%>
+      </h2>
+      <div class="user__card">
+        <%= render partial: "tweets/tweet", collection: @user.tweets %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,9 @@
 <%= form_with model: @tweet, local: true do |f|%>
+
+<%= render 'messages/error_messages', resource: @tweet, model: f.object %>
+
   <div class="field">
-    <%= f.label :title, "プロトタイプの名称" %><br />
+    <%= f.label :title, "デッキの名称(33字以内)" %><br />
     <%= f.text_field :title %>
   </div>
 
@@ -9,11 +12,12 @@
     <%= f.text_area :concept, class: :form__text %>
   </div>
 
-  <div class="field">
-    <%= f.label :image, "プロトタイプの画像" %><br />
-    <%= f.file_field :image %>
-  </div>
+  <div id="image-list"></div>
 
+  <div class="field">
+    <%= f.label :image, "デッキの画像" %><br />
+    <%= f.file_field :image, id: 'image_image' %>
+  </div>
   <div class="actions">
     <%= f.submit "保存する", class: :form__btn  %>
   </div>
