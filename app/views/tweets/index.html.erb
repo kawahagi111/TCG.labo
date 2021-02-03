@@ -1,10 +1,10 @@
 <main class="main">
-  <div class="inner">
-    <% if user_signed_in? %>
-     <div class="greeting"> 
-        <%= "こんにちは、" %>
-         <%= link_to "#{current_user.nickname}", root_path, class: :greeting__link%>
-      </div>
+<div class="inner">
+    
+    <%="デッキ名検索"%>
+   <%= search_form_for @search do |f| %>
+    <%= f.search_field :title_cont %>
+    <%= f.submit %>
     <% end %>
     <div class="card__wrapper">
       <%= render partial: "tweet", collection: @tweet %>
