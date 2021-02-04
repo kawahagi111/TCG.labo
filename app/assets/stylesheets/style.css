@@ -67,6 +67,19 @@
     border-radius: 3px;
     transition: 0.4s ease;
   }
+  .nav__btnn{
+    display: inline-block;
+    padding: 1em 3em;
+    font-size: 0.8em;
+    margin-top: 20px;
+    color: black;
+    text-decoration: none;
+    user-select: none;
+    border: 1px black solid;
+    border-radius: 3px;
+    transition: 0.4s ease;
+    background-color: azure;
+  }
   .nav__btn:hover{
     color: #fff;
     background:red;
@@ -103,7 +116,9 @@
     text-align: right;
     margin-bottom: 40px;
   }
-  
+  .action{
+    margin-bottom: 40px;
+  } 
   .form__btn{
     display: inline-block;
     padding: 0.4em 1.6em;

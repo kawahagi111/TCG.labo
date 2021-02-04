@@ -41,6 +41,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("パスワード（確認用） translation missing: ja.activerecord.errors.models.user.attributes.password_confirmation.confirmation")
       end
+      it 'nicknameが25字以上だと登録できない' do
+        @user.nickname = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめも'
+        @user.valid?
+        expect(@user.errors.full_messages).to include "ニックネーム translation missing: ja.activerecord.errors.models.user.attributes.nickname.too_long"
+      end
       it 'passwordが英字のみでは登録できない' do
         @user.password = 'aaaaaa'
         @user.valid?

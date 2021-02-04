@@ -4,7 +4,7 @@
       <p class="prototype__hedding">
         <%= @tweet.title %>
       </p>
-      <%= link_to "#{@tweet.user.nickname}", root_path, class: :prototype__user %>
+      <%= link_to "#{@tweet.user.nickname}", "/users/#{@tweet.user_id}", class: :prototype__user %>
       <% if user_signed_in? && current_user.id == @tweet.user_id %>
         <div class="prototype__manage">
           <%= link_to "編集する", edit_tweet_path(@tweet), class: :prototype__btn %>
@@ -17,7 +17,7 @@
       </div>
       <div class="prototype__body">
         <div class="prototype__detail">
-          <p class="detail__title">コンセプト</p>
+          <p class="detail__title">コンセプト</p> 
           <p class="detail__message">
             <%= @tweet.concept %>
           </p>
@@ -26,11 +26,11 @@
       <div class="prototype__comments">
          <%if user_signed_in? %>
           <%= form_with(model: [@tweet, @comment], local: true) do |f|%>
-            <div class="actions">
+            <div class="action">
               <%= f.label :text, "コメント" %><br />
               <%= f.text_field :text %>
             </div>
-            <div class="actions">
+            <div class="action">
               <%= f.submit "送信する", class: :form__btn  %>
             </div>
           <% end %> 
