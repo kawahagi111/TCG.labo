@@ -6,9 +6,11 @@ class Tweet < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :games
 
-  validates :title,        presence: true
-  validates :concept,      presence: true
-  validates :image,        presence: true
+  is_impressionable 
 
-  is_impressionable
+  with_options presence: true do
+   validates :title, length: {maximum: 32}     
+   validates :concept
+   validates :image
+  end
 end

@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] 
   resources :games, only: [:show]
+  resources :yugious, only: [:index]
 
 end
